@@ -1,0 +1,35 @@
+﻿<Application x:Class="KhanEngine.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:v="clr-namespace:KhanEngine.View"
+             StartupUri="Form/frmMain.xaml">
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Style/ImgTextbox.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+            <SolidColorBrush x:Key="titleColor" Color="#FF7E7E7E" />
+            <SolidColorBrush x:Key="HP" Color="#EE4433" />
+            <SolidColorBrush x:Key="MP" Color="#3388FF" />
+            <SolidColorBrush x:Key="EXP" Color="#FF33B088" />
+            <SolidColorBrush x:Key="LV" Color="#11181B" />
+            <SolidColorBrush x:Key="lightBlue" Color="#FF0D75B0" />
+            <SolidColorBrush x:Key="lightGreen" Color="#FF0DB092" />
+            <SolidColorBrush x:Key="darkSilver" Color="#FF565D5B" />
+
+            <SolidColorBrush x:Key="Backgrounds" Color="#FF145B8B" />
+            <SolidColorBrush x:Key="Background" Color="#FF595959" />
+            <SolidColorBrush x:Key="Foreground" Color="#FFB9D8EF" />
+            <SolidColorBrush x:Key="BorderBrush" Color="#FFB27659" />
+            <SolidColorBrush x:Key="IsMBackground" Color="#FF020304" />
+            <SolidColorBrush x:Key="IsMBorderBrush" Color="#FF3C7FB1" />
+            <SolidColorBrush x:Key="IsPBackground" Color="#FF46545B" />
+            <SolidColorBrush x:Key="IsPBorderBrush" Color="#FF2C628B" />
+            <SolidColorBrush x:Key="ToggleBackground" Color="#FFE27100" />
+            <SolidColorBrush x:Key="ToggleBorderBrush" Color="#FF245A83" />
+            <SolidColorBrush x:Key="IsEBackground" Color="#FFF4F4F4" />
+            <SolidColorBrush x:Key="IsEBorderBrush" Color="#FFADB2B5" />
+            <v:MainView x:Key="MainView" />
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

@@ -1,0 +1,6 @@
+D:\GoogleDrive\KhanEngine\Setting\bin\Debug\Setting.dll
+D:\GoogleDrive\KhanEngine\Setting\bin\Debug\Setting.pdb
+D:\GoogleDrive\KhanEngine\Setting\obj\Debug\Setting.csproj.CoreCompileInputs.cache
+D:\GoogleDrive\KhanEngine\Setting\obj\Debug\Setting.dll
+D:\GoogleDrive\KhanEngine\Setting\obj\Debug\Setting.pdb
+D:\GoogleDrive\KhanEngine\Setting\obj\Debug\Setting.csprojAssemblyReference.cache

@@ -1,0 +1,121 @@
+﻿<Page x:Class="KhanEngine.PageFrame.LoginPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      mc:Ignorable="d"
+      xmlns:p="clr-namespace:KhanBlaze.Dependency"
+      DataContext="{StaticResource MainView}"
+      d:DesignHeight="220"
+      d:DesignWidth="300"
+      Title="LoginPage"
+      Background="#FFF3F3F3" HorizontalAlignment="Center" VerticalAlignment="Center" Height="220">
+    <Grid>
+        <StackPanel>
+            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,0,0">
+                <GroupBox  BorderThickness="1.5" Grid.Column="5" FontStyle="Italic" Margin="8" HorizontalAlignment="Center" VerticalAlignment="Center" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Auto" VerticalContentAlignment="Center" BorderBrush="#FFA1A6AA" HorizontalContentAlignment="Center">
+                    <GroupBox.Header>
+                        <StackPanel Orientation="Horizontal">
+                            <Label Content="{Binding Language.Login}" FontWeight="Bold" FontStyle="Italic">
+                                <Label.Foreground>
+                                    <LinearGradientBrush EndPoint="0.5,0.5" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0" SpreadMethod="Repeat">
+                                        <GradientStop Color="#FF575757" Offset="1" />
+                                        <GradientStop Color="#FF9F8CB2" />
+                                    </LinearGradientBrush>
+                                </Label.Foreground>
+                            </Label>
+                            <Label Content=": V" FontWeight="Bold" FontStyle="Italic" Margin="-8,0,0,0">
+                                <Label.Foreground>
+                                    <LinearGradientBrush EndPoint="0.5,0.5" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0" SpreadMethod="Repeat">
+                                        <GradientStop Color="#FF575757" Offset="1" />
+                                        <GradientStop Color="#FF9F8CB2" />
+                                    </LinearGradientBrush>
+                                </Label.Foreground>
+                            </Label>
+                            <Label Content="{Binding InfoV.Version}" FontWeight="Bold" FontStyle="Italic" Margin="-9,0,0,0">
+                                <Label.Foreground>
+                                    <LinearGradientBrush EndPoint="0.5,0.5" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0" SpreadMethod="Repeat">
+                                        <GradientStop Color="#FF575757" Offset="1" />
+                                        <GradientStop Color="#FF9F8CB2" />
+                                    </LinearGradientBrush>
+                                </Label.Foreground>
+                            </Label>
+                        </StackPanel>
+                    </GroupBox.Header>
+                    <StackPanel>
+                        <StackPanel Orientation="Horizontal"
+                            Height="30"
+                            VerticalAlignment="Center"
+                            HorizontalAlignment="Center" Margin="0,8,0,0">
+                            <TextBox  Style="{StaticResource UserTextbox}"
+                                      Text="{Binding LoginM.Id,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                                      Tag="{Binding Language.Username}"
+                                      KeyUp="OnKeyDownHandler"
+                                      Width="230"
+                                      x:Name="Username"
+                                      HorizontalContentAlignment="Left"
+                                      VerticalContentAlignment="Center"
+                                      Background="White" />
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal"
+                                    Height="30"
+                                    VerticalAlignment="Center"
+                                    HorizontalAlignment="Center" Margin="0,6,0,0">
+                            <PasswordBox x:Name="Passwords" p:PasswordHelper.Attach="True"
+                                         KeyUp="OnKeyDown"
+                                         p:PasswordHelper.Password="{Binding LoginM.Password, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                                         Width="155"
+                                         Tag="******"
+                                         HorizontalContentAlignment="Left"
+                                         VerticalContentAlignment="Center"
+                                         Template="{DynamicResource PasswordStyle}"
+                                         Background="White">
+                                <PasswordBox.InputBindings>
+                                    <KeyBinding Key="Return" Command="{Binding LoginVM.LoginCommand}" />
+                                </PasswordBox.InputBindings>
+                            </PasswordBox>
+                            <Button x:Name="LoginNow" Content="{Binding Language.Login}"
+                                    Foreground="White"
+                                    Margin="-7 0 0 0"
+                                    Width="83"
+                                    Cursor="Hand"
+                                    BorderThickness="0"
+                                    Style="{DynamicResource ConnerButton}"
+                                    Command="{Binding LoginVM.LoginCommand}" HorizontalAlignment="Center" VerticalAlignment="Center" FontStyle="Italic" FontSize="11">
+                                <Button.Background>
+                                    <RadialGradientBrush>
+                                        <GradientStop Color="#FF2D7EB6" />
+                                        <GradientStop Color="#FF236491" Offset="0.95" />
+                                    </RadialGradientBrush>
+                                </Button.Background>
+                            </Button>
+                        </StackPanel>
+
+                        <StackPanel Orientation="Vertical"
+                                    VerticalAlignment="Top"
+                                    Margin="50 10 50 0">
+                            <Path Data="M110,160 L720,160" HorizontalAlignment="Center" Height="5" Stretch="Fill" VerticalAlignment="Top"  Stroke="#FF44474B" />
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0 0 0 0">
+                                <Label Content="{Binding Language.NoAccount}"
+                                       FontSize="10" FontStyle="Italic" />
+                                <Label Content="{Binding Language.RegisterNow}"
+                                       MouseLeftButtonUp="Label_MouseLeftButtonUp"
+                                       Margin="-6 0 0 0"
+                                       FontSize="10"
+                                       FontStyle="Oblique"
+                                       Foreground="#FF0B4891" Cursor="Hand" />
+                            </StackPanel>
+                        </StackPanel>
+                    </StackPanel>
+                </GroupBox>
+            </StackPanel>
+            <StackPanel>
+                <StackPanel HorizontalAlignment="Center">
+                    <TextBlock Text="Website : http://kteamauto.com" />
+                    <TextBlock Text="Facebook : FB.com/ThienHaPK (^_^)" />
+                    <TextBlock Text="2018 © KTeam. All rights reserved." />
+                </StackPanel>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Page>

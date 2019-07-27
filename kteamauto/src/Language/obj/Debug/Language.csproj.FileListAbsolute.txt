@@ -1,0 +1,6 @@
+D:\GoogleDrive\KhanEngine\Language\bin\Debug\Language.dll
+D:\GoogleDrive\KhanEngine\Language\bin\Debug\Language.pdb
+D:\GoogleDrive\KhanEngine\Language\obj\Debug\Language.csprojAssemblyReference.cache
+D:\GoogleDrive\KhanEngine\Language\obj\Debug\Language.csproj.CoreCompileInputs.cache
+D:\GoogleDrive\KhanEngine\Language\obj\Debug\Language.dll
+D:\GoogleDrive\KhanEngine\Language\obj\Debug\Language.pdb

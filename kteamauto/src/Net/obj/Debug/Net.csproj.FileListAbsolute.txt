@@ -1,0 +1,15 @@
+D:\GoogleDrive\KhanEngine\Net\bin\Debug\Net.dll
+D:\GoogleDrive\KhanEngine\Net\bin\Debug\Net.pdb
+D:\GoogleDrive\KhanEngine\Net\obj\Debug\Net.csprojAssemblyReference.cache
+D:\GoogleDrive\KhanEngine\Net\obj\Debug\Net.csproj.CoreCompileInputs.cache
+D:\GoogleDrive\KhanEngine\Net\obj\Debug\Net.dll
+D:\GoogleDrive\KhanEngine\Net\obj\Debug\Net.pdb
+D:\GoogleDrive\KhanEngine\Net\obj\Debug\Net.csproj.CopyComplete
+D:\GoogleDrive\KhanEngine\Net\bin\Debug\Newtonsoft.Json.dll
+D:\GoogleDrive\KhanEngine\Net\bin\Debug\Language.dll
+D:\GoogleDrive\KhanEngine\Net\bin\Debug\Language.pdb
+D:\GoogleDrive\KhanEngine\Net\bin\Debug\Data.dll
+D:\GoogleDrive\KhanEngine\Net\bin\Debug\Setting.dll
+D:\GoogleDrive\KhanEngine\Net\bin\Debug\Data.pdb
+D:\GoogleDrive\KhanEngine\Net\bin\Debug\Data.dll.config
+D:\GoogleDrive\KhanEngine\Net\bin\Debug\Setting.pdb

@@ -1,0 +1,35 @@
+C:\Users\SSTeam\Google Drive\HTV Source\Memory\Memory\bin\x86\Release\HTVInterface.dll
+C:\Users\SSTeam\Google Drive\HTV Source\Memory\Memory\bin\x86\Release\HTVInterface.pdb
+C:\Users\SSTeam\Google Drive\HTV Source\Memory\Memory\obj\x86\Release\HTVInterface.dll
+C:\Users\SSTeam\Google Drive\HTV Source\Memory\Memory\obj\x86\Release\HTVInterface.pdb
+C:\Users\SSTeam\Google Drive\HTV Source\Memory\Memory\obj\x86\Release\Memory.csprojResolveAssemblyReference.cache
+C:\Users\SSTeam\Google Drive\HTV Source\Memory\Memory\bin\x86\Release\Newtonsoft.Json.dll
+C:\Users\cyber\Desktop\Memory\Memory\bin\x86\Release\HTVInterface.dll
+C:\Users\cyber\Desktop\Memory\Memory\bin\x86\Release\HTVInterface.pdb
+C:\Users\cyber\Desktop\Memory\Memory\bin\x86\Release\Newtonsoft.Json.dll
+C:\Users\cyber\Desktop\Memory\Memory\obj\x86\Release\HTVInterface.dll
+C:\Users\cyber\Desktop\Memory\Memory\obj\x86\Release\HTVInterface.pdb
+C:\Users\cyber\Desktop\Memory\Memory\obj\x86\Release\Memory.csprojResolveAssemblyReference.cache
+C:\Users\cyber\Desktop\DZO\Memory\Memory\bin\x86\Release\HTVInterface.dll
+C:\Users\cyber\Desktop\DZO\Memory\Memory\bin\x86\Release\HTVInterface.pdb
+C:\Users\cyber\Desktop\DZO\Memory\Memory\bin\x86\Release\Newtonsoft.Json.dll
+C:\Users\cyber\Desktop\DZO\Memory\Memory\obj\x86\Release\Memory.csprojResolveAssemblyReference.cache
+C:\Users\cyber\Desktop\DZO\Memory\Memory\obj\x86\Release\HTVInterface.dll
+C:\Users\cyber\Desktop\DZO\Memory\Memory\obj\x86\Release\HTVInterface.pdb
+C:\Users\cyber\Desktop\Dzogame\Memory\Memory\bin\x86\Release\HTVInterface.dll
+C:\Users\cyber\Desktop\Dzogame\Memory\Memory\bin\x86\Release\HTVInterface.pdb
+C:\Users\cyber\Desktop\Dzogame\Memory\Memory\obj\x86\Release\Memory.csprojResolveAssemblyReference.cache
+C:\Users\cyber\Desktop\Dzogame\Memory\Memory\obj\x86\Release\HTVInterface.dll
+C:\Users\cyber\Desktop\Dzogame\Memory\Memory\obj\x86\Release\HTVInterface.pdb
+C:\Users\cyber\Desktop\Khan\Memory\Memory\obj\x86\Release\Memory.csprojResolveAssemblyReference.cache
+C:\Users\cyber\Desktop\Khan\Memory\Memory\bin\x86\Release\Data.dll
+C:\Users\cyber\Desktop\Khan\Memory\Memory\bin\x86\Release\Data.pdb
+C:\Users\cyber\Desktop\Khan\Memory\Memory\obj\x86\Release\Data.dll
+C:\Users\cyber\Desktop\Khan\Memory\Memory\obj\x86\Release\Data.pdb
+C:\Users\cyber\Desktop\KhanBlaze\Memory\Memory\bin\x86\Release\Data.dll
+C:\Users\cyber\Desktop\KhanBlaze\Memory\Memory\bin\x86\Release\Data.pdb
+C:\Users\cyber\Desktop\KhanBlaze\Memory\Memory\bin\x86\Release\Newtonsoft.Json.dll
+C:\Users\cyber\Desktop\KhanBlaze\Memory\Memory\obj\x86\Release\Memory.csprojResolveAssemblyReference.cache
+C:\Users\cyber\Desktop\KhanBlaze\Memory\Memory\obj\x86\Release\Memory.csproj.CoreCompileInputs.cache
+C:\Users\cyber\Desktop\KhanBlaze\Memory\Memory\obj\x86\Release\Data.dll
+C:\Users\cyber\Desktop\KhanBlaze\Memory\Memory\obj\x86\Release\Data.pdb
