@@ -1,0 +1,39 @@
+1 2 3 4 unique               # Tiered uniques
+sacred unique                # Sacred uniques
+"Ring$|Amulet$|Jewel" unique # Unique jewelry
+"Quiver" unique
+set
+"Belladonna"
+"Shrine \(10"                # Shrines
+#"Quiver" rare
+#"Ring$|Amulet" rare          # Rare rings and amulets
+#sacred eth superior rare
+
+"Signet of Learning"
+"Greater Signet"
+"Emblem"
+"Trophy"
+"Cycle"
+"Enchanting"
+"Wings"
+"Runestone|Essence$" # Teganze runes
+"Great Rune"         # Great runes
+"Orb\|"              # UMOs
+"Oil of Conjuration"
+"Dimensional Key"
+"Occult Effigy"
+"Mystic Dye"
+"Relic"
+"Quest Item"
+#"Ring of the Five"
+
+# Hide items
+hide 1 2 3 4 low normal superior magic rare
+hide "^(Ring|Amulet)$" magic
+hide "Quiver" normal magic
+hide "^(Amethyst|Topaz|Sapphire|Emerald|Ruby|Diamond|Skull|Onyx|Bloodstone|Turquoise|Amber|Rainbow Stone)$"
+hide "^Flawless"
+show "(Greater|Super) Healing Potion"
+hide "(Healing|Mana) Potion"
+hide "^Key$"
+hide "^(El|Eld|Tir|Nef|Eth|Ith|Tal|Ral|Ort|Thul|Amn|Sol|Shael|Dol|Hel|Io|Lum|Ko|Fal|Lem|Pul|Um|Mal|Ist|Gul|Vex|Ohm|Lo|Sur|Ber|Jah|Cham|Zod) Rune$"
