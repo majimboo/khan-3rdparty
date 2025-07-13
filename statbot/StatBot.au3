@@ -1,10 +1,7 @@
 #RequireAdmin
-#Region ;**** Directives created by AutoIt3Wrapper_GUI ****
-#AutoIt3Wrapper_Outfile=statbot.Exe
-#AutoIt3Wrapper_UseUpx=y
-#EndRegion ;**** Directives created by AutoIt3Wrapper_GUI ****
 #include <GUIConstantsEx.au3>
 #include <WindowsConstants.au3>
+#include <EditConstants.au3>
 #include <WinAPIEx.au3>
 #include <NomadMemory.au3>
 
@@ -15,19 +12,29 @@ Global $iCurrentPID = 0
 Global $bReadingStats = False ; Prevent re-entrancy
 Global $sCurrentSel = ""
 
-; Stat function addresses for STR, DEX, CON, INT, WIS, CHA (from your post)
+; Stat function addresses for STR, DEX, CON, INT, WIS, CHA
 Global $statFuncAddr[6] = [0x50C890, 0x50C980, 0x50CA70, 0x50CB60, 0x50CC50, 0x50CD40]
+Global $prevStatVal[6] = ["","","","","",""]
+
+; Thread and interval management
+Global $threadHandle[6] = [0,0,0,0,0,0]
+Global $lastCallTick[6] = [0,0,0,0,0,0]
+Global $userStatInterval = 200 ; ms, user-settable
 
 ; GUI Layout
-Local $width = 380, $height = 340
+Local $width = 430, $height = 360
 Local $gui = GUICreate("Character Stats", $width, $height)
 GUICtrlCreateLabel("Select process:", 20, 20, 90, 22)
 Global $cmbProc = GUICtrlCreateCombo("No process found", 115, 18, 150, 24)
 Global $btnRefresh = GUICtrlCreateButton("Refresh", 275, 18, 75, 24)
-Local $group = GUICtrlCreateGroup("Stats", 20, 55, $width-40, 255)
+GUICtrlCreateLabel("Delay (ms):", 20, 50, 70, 22)
+Global $inputDelay = GUICtrlCreateInput($userStatInterval, 95, 48, 60, 22, $ES_NUMBER)
+Global $btnSetDelay = GUICtrlCreateButton("Set", 160, 48, 50, 22)
+
+Local $group = GUICtrlCreateGroup("Stats", 20, 80, $width-40, 255)
 
 ; Layout positions
-Local $statBlockX = 40, $yStart = 80, $rowGap = 35
+Local $statBlockX = 40, $yStart = 110, $rowGap = 35
 
 Global $cb[6], $lbl[6], $names[6] = ["STR","DEX","CON","INT","WIS","CHA"]
 For $i = 0 To 5
@@ -44,7 +51,7 @@ GUISetState(@SW_SHOW)
 _RefreshProcessList()
 AdlibRegister("_AutoUpdateStats", 100)
 AdlibRegister("_AutoRefreshProcList", 5000)
-AdlibRegister("_RepeatStatCalls", 250)
+AdlibRegister("_RepeatStatCalls", 30)
 
 While 1
     Local $msg = GUIGetMsg()
@@ -55,6 +62,11 @@ While 1
             _RefreshProcessList(True)
         Case $cmbProc
             _SelectPIDFromDropdown()
+        Case $btnSetDelay
+            Local $val = Int(GUICtrlRead($inputDelay))
+            If $val < 10 Then $val = 10
+            $userStatInterval = $val
+            GUICtrlSetData($inputDelay, $userStatInterval)
     EndSwitch
 WEnd
 
@@ -156,6 +168,7 @@ EndFunc
 Func _ShowNoStats()
     For $i = 0 To 5
         GUICtrlSetData($lbl[$i], "-")
+        $prevStatVal[$i] = "-"
     Next
 EndFunc
 
@@ -172,7 +185,10 @@ Func _AutoUpdateStats()
     Local $stats = _ReadAllStats($iCurrentPID)
     If IsArray($stats) Then
         For $i = 0 To 5
-            GUICtrlSetData($lbl[$i], $stats[$i])
+            If $prevStatVal[$i] <> $stats[$i] Then
+                GUICtrlSetData($lbl[$i], $stats[$i])
+                $prevStatVal[$i] = $stats[$i]
+            EndIf
         Next
     Else
         _ShowNoStats()
@@ -230,10 +246,7 @@ EndFunc
 
 Func _CallRemoteFunc($pid, $absoluteAddress)
     Local $hProc = _MemoryOpen($pid)
-    If $hProc = 0 Then
-        MsgBox(16, "Error", "Can't open process")
-        Return
-    EndIf
+    If $hProc = 0 Then Return 0
     Local $ret = DllCall("kernel32.dll", "handle", "CreateRemoteThread", _
         "handle", $hProc[1], _
         "ptr", 0, _
@@ -243,15 +256,38 @@ Func _CallRemoteFunc($pid, $absoluteAddress)
         "dword", 0, _
         "ptr", 0)
     _MemoryClose($hProc)
-    ; Do not show error msgbox repeatedly, it's spammy!
+    If @error Or Not IsArray($ret) Or $ret[0] = 0 Then Return 0
+    Return $ret[0] ; Thread handle
 EndFunc
 
-; --- NEW: Adlib handler to repeat stat calls while checked ---
+; --- Core: Run stat calls fast but never overlap per stat ---
 Func _RepeatStatCalls()
     If $iCurrentPID = 0 Or Not ProcessExists($iCurrentPID) Then Return
     For $i = 0 To 5
         If BitAND(GUICtrlRead($cb[$i]), $GUI_CHECKED) Then
-            _CallRemoteFunc($iCurrentPID, $statFuncAddr[$i])
+            Local $ready = False
+            If $threadHandle[$i] = 0 Then
+                $ready = True
+            Else
+                Local $res = DllCall("kernel32.dll", "dword", "WaitForSingleObject", "handle", $threadHandle[$i], "dword", 0)
+                If IsArray($res) And $res[0] <> 0x102 Then ; Not WAIT_TIMEOUT
+                    DllCall("kernel32.dll", "int", "CloseHandle", "handle", $threadHandle[$i])
+                    $threadHandle[$i] = 0
+                    $ready = True
+                EndIf
+            EndIf
+
+            If $ready And (TimerDiff($lastCallTick[$i]) >= $userStatInterval Or $lastCallTick[$i]=0) Then
+                $threadHandle[$i] = _CallRemoteFunc($iCurrentPID, $statFuncAddr[$i])
+                $lastCallTick[$i] = TimerInit()
+            EndIf
+        Else
+            ; Clean up if user unchecks
+            If $threadHandle[$i] <> 0 Then
+                DllCall("kernel32.dll", "int", "CloseHandle", "handle", $threadHandle[$i])
+                $threadHandle[$i] = 0
+            EndIf
+            $lastCallTick[$i] = 0
         EndIf
     Next
 EndFunc
